@@ -1,7 +1,8 @@
 const Manager = require("./lib/Manager");
 const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/Intern")
+const Intern = require("./lib/Intern");
+
 //  import additional classes
 const inquirer = require("inquirer");
 const fs = require("fs");
@@ -36,6 +37,12 @@ menu = () => {
     ]).then(({name, id, email, officeNumber}) => {
         const manager = new Manager(name, id, email, officeNumber);
         console.log(manager);
+    }).then(({name, id, email, github}) => {
+        const engineer = new Engineer(name, id, email, github);
+        console.log(engineer);
+    }).then(({name, id, email, school}) => {
+        const intern = new intern(name, id, email, school);
+        console.log(intern)
     })
 }
 menu();
