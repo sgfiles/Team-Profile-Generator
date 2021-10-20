@@ -1,9 +1,8 @@
 
 const Employee = require('../lib/Employee');
-
-// // test("Successfully instantiates instance of Employee Class", () => {
+//  test("Successfully instantiates instance of Employee Class", () => {
 //     const employee = new Employee();    
-//     expect(employee).toEqual("Object")
+//     expect(employee).toEqual("object")
 //    })
 
 test("Successfully set a name via constructor arguments", () => {

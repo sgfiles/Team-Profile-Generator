@@ -3,7 +3,7 @@ const Intern = require("../lib/Intern");
 
 // test("Successfully instantiates instance of Intern Class", () => {
 //     const intern = new Intern();    
-//     expect(typeof(Intern).toEqual("object"));
+//     expect(typeof(Intern).toBe("object"));
 //    })
 
 test("Successfully set a name via constructor arguments", () => {

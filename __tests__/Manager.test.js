@@ -3,7 +3,7 @@ const Manager = require("../lib/Manager");
 
 // test("Successfully instantiates instance of Manager Class", () => {
 //     const manager = new Manager();    
-//     expect(manager).toBe("Object");
+//     expect(manager).toBe("object");
 //    })
 
 test("Successfully set a name via constructor arguments", () => {
