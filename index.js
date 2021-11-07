@@ -5,7 +5,6 @@ const Intern = require("./lib/Intern");
 
 //  import additional classes
 const inquirer = require("inquirer");
-// const OUTPUT_DIR = path.resolve(__dirname, "output")
 const path = require("path");
 const render = require("./src/card-template");
 const fs = require("fs");
@@ -18,22 +17,22 @@ menu = () => {
         inquirer.prompt([
             {
                 type: "input",
-                name: "name",
-                message: "Who would you like to add to your team?",
+                name: "Name",
+                message: "What is the employee name?",
             },
             {
                 type: "input",
-                name: "managerId",
+                name: "Id",
                 message: "What is the employee's id?",
             },
             {
                 type: "input",
-                name: "email",
+                name: "Email",
                 message: "What is the employee's email?",
             },
             {
                 type: "input",
-                name: "officeNumber",
+                name: "Role",
                 message: "What is the employee's role?",
             },
         ]).then(answers => {
@@ -42,7 +41,6 @@ menu = () => {
             idArray.push(answers.managerId)
             createTeam()
         })
-      
 }
     function createTeam() {
         inquirer.prompt([
@@ -50,30 +48,35 @@ menu = () => {
                 type: "list",
                 name: "teamChoice",
                 message: "Who would you like to add to your team?",
-                choices: ["Engineer", "Intern", "I don't want any more team members"]
+                choices: ["Engineer", "Intern", "Manager", "I don't want any more team members"]
                 // validation her
             },
-        ]).then(userChoice => {
-            switch (userChoice.teamChoice) {
-                case "Engineer":
-                    addEngineer();
-                    break;
-                case "Intern":
-                    addIntern();
-                default:
-                    buildTeam();
-            }
-        })
-    }
-    function addEngineer() {
-    // prompt for questions for engineer
-        const engineer = new Engineer(answers.name, answers.github, answers.email, answers.engineerId)
-        teamMembers.push(engineer)
-        idArray.push(answers.engineerId)
-        // ask if they want to keep adding team members
-        createTeam()
-    }
 
+        ])
+        
+      
+    }
+        // ]).then(userChoice => {
+        //     switch (userChoice.teamChoice) {
+        //         case "Engineer":
+        //             addEngineer();
+        //             break;
+        //         case "Intern":
+        //             addIntern();
+        //         default:
+        //             buildTeam();
+        //     }
+        //})
+        function newEngineer () {
+            inquirer.prompt(newEngineerPrompt).then(answers => {
+                teamMembers.push(new Engineer(answers.name, answers.github, answers.email, answers.Id));
+                // ask if they want to keep adding team members
+                createTeam()
+            })
+        }
+        
+    
+    
     function addIntern() {
         // prompt with questions for intern .then build intern
         const intern = new Intern(answers.name, answers.school, answers.email, answers.internId)
